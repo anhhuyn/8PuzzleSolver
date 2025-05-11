@@ -5,3 +5,10 @@ from .greedy import greedy_search
 from .astar import a_star
 from .ids import iterative_deepening_search
 from .idastar import ida_star
+
+from .simple_hill_climbing import simple_hill_climbing
+from .steepest_ascent_hill_climbing import steepest_ascent_hill_climbing
+from .stochastic_hill_climbing import stochastic_hill_climbing
+from .simulated_annealing import simulated_annealing
+from .beam_search import beam_search
+from .genetic_algorithm import genetic_algorithm

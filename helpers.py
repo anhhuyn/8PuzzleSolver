@@ -1,5 +1,5 @@
 # helpers.py
-from constants import GRID_SIZE
+from constants import GRID_SIZE,  target_state
 
 def locate_blank(state):
     for i in range(GRID_SIZE):
@@ -29,3 +29,6 @@ def calculate_heuristic(state):
                 target_y = (value - 1) % GRID_SIZE
                 distance += abs(i - target_x) + abs(j - target_y)
     return distance
+
+def is_goal(state):
+    return state == target_state
