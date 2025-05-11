@@ -21,7 +21,7 @@ Mục tiêu của bài toán là tìm ra dãy hành động (chuỗi trạng th�
 |:--------------------------------:|:--------------------------------:|:--------------------------------:|:--------------------------------:|
 | **Mô phỏng BFS**                 | **Mô phỏng IDS**                 | **Mô phỏng UCS**                 | **Mô phỏng DFS**                 |
 #### So sánh hiệu suất
-    ![Biểu đồ hiệu suất](performance_comparison_uninformed.png)
+    ![Biểu đồ hiệu suất](performance_comparison_uninformed.png.png)
 
 ### 2.2. Các thuật toán Tìm kiếm có thông tin (Informed Search)
 
