@@ -81,6 +81,31 @@ Mục tiêu của bài toán là tìm ra dãy hành động (chuỗi trạng th�
 | **Genetic Algorithm (GA)** | Mô phỏng tiến hóa sinh học: chọn lọc, lai ghép, đột biến để tạo thế hệ mới.             | Khả năng khám phá không gian rộng, lời giải đa dạng | Phức tạp, cần tinh chỉnh tham số                              |
 
 ### 2.4. Các thuật toán Tìm kiếm trong môi trường phức tạp (Complex Environments)
+#### Thành phần chính của bài toán tìm kiếm trong môi trường phức tạp
+
+- **Trạng thái ban đầu (Initial State):** vị trí hoặc tình trạng ban đầu của tác nhân trong môi trường.
+- **Tập hành động (Actions):** các hành động có thể thực hiện trong môi trường, có thể bao gồm các quyết định dựa trên thông tin quan sát được.
+- **Trạng thái kế tiếp (Transition Model):** trạng thái mới sau khi thực hiện một hành động trong môi trường, có thể không xác định hoàn toàn.
+- **Trạng thái đích (Goal State):** trạng thái mà tác nhân muốn đạt được trong môi trường, có thể là một trạng thái không hoàn toàn xác định.
+- **Chi phí đường đi (Path Cost):** tổng chi phí từ trạng thái ban đầu đến trạng thái đích, có thể bao gồm các yếu tố không chắc chắn.
+- **Heuristic (Hàm ước lượng):** chi phí ước lượng từ trạng thái hiện tại đến đích, có thể dựa trên quan sát, thông tin không chắc chắn, hoặc thông tin không đầy đủ.
+- **Solution:** chuỗi hành động hoặc dãy trạng thái dẫn từ trạng thái ban đầu đến đích, có thể bao gồm các quyết định trong môi trường không hoàn toàn.
+
+| <img src="uncertain_bfs.gif" width="150"/> | <img src="search_with_no_observations.gif" width="150"/> | <img src="partially_observable_bfs.gif" width="150"/> |
+|:-----------------------------------------:|:-------------------------------------------------------:|:-----------------------------------------------------:|
+| **Mô phỏng BFS Uncertain**                | **Mô phỏng No Observations**                             | **Mô phỏng Partially Observable BFS**                 |
+
+#### So sánh các thuật toán tìm kiếm trong môi trường phức tạp
+
+| **Tiêu chí**             | **BFS Uncertain**                               | **No Observations**                               | **Partially Observable BFS**                          |
+|--------------------------|------------------------------------------------|---------------------------------------------------|--------------------------------------------------------|
+| **Chiến lược**           | Tìm kiếm theo chiều rộng với các quyết định dựa trên thông tin không chắc chắn | Tìm kiếm trong môi trường không có thông tin quan sát | Tìm kiếm trong môi trường có một phần thông tin quan sát |
+| **Cấu trúc dữ liệu**     | Queue (theo độ sâu)                            | Queue hoặc Priority Queue (dựa trên các hành động khả thi) | Queue (theo độ sâu), kết hợp với thông tin quan sát được |
+| **Tối ưu (Optimal)?**    | Không thể đảm bảo tối ưu trong môi trường không chắc chắn | Không đảm bảo tối ưu vì thiếu thông tin quan sát | Có thể tối ưu nếu các quan sát có đủ và chính xác |
+| **Hoàn tất (Complete)?** | Có nếu có đủ thông tin để tìm ra giải pháp    | Không hoàn tất nếu không có bất kỳ thông tin nào về môi trường | Hoàn tất nếu có đủ quan sát và thông tin trạng thái    |
+| **Thời gian**            | Thời gian tìm kiếm có thể dài do tính không chắc chắn của môi trường | Thời gian tìm kiếm có thể lâu vì thiếu thông tin quan sát | Tìm kiếm hiệu quả hơn nếu có đủ thông tin quan sát     |
+| **Bộ nhớ**               | Tốn bộ nhớ cao vì cần lưu trữ tất cả các trạng thái có thể | Tốn bộ nhớ thấp, phụ thuộc vào mức độ phức tạp của môi trường | Tiết kiệm bộ nhớ nhờ việc chỉ lưu trữ thông tin cần thiết |
+| **Ứng dụng**             | Khi môi trường có yếu tố không chắc chắn, cần tìm kiếm theo chiều rộng | Khi không có bất kỳ thông tin quan sát nào về môi trường | Khi môi trường có thông tin quan sát một phần và có thể dẫn tới các quyết định chính xác hơn |
 
 ### 2.5. Các thuật toán Tìm kiếm CSPs - Constraint Satisfaction Problems
 

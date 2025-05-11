@@ -16,6 +16,9 @@ from algorithms import (
     simulated_annealing,
     beam_search,
     genetic_algorithm,
+    uncertain_bfs, 
+    search_with_no_observations,
+    partially_observable_bfs
 )
 
 
@@ -40,6 +43,7 @@ def main():
             ("Greedy", greedy_search),
             ("A*", a_star),
             ("IDA*", ida_star),
+             ("Partially Observable BFS", partially_observable_bfs)
         ],
         # Cột phải: thuật toán tìm kiếm cục bộ
         [
@@ -49,6 +53,8 @@ def main():
             ("SA", simulated_annealing),
             ("Beam Search", lambda: beam_search(5)),
             ("GA", genetic_algorithm),
+            ("Uncertain BFS", uncertain_bfs),
+            ("No Observations", search_with_no_observations)
         ]
     ]
 

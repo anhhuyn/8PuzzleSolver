@@ -1,5 +1,6 @@
 # helpers.py
 from constants import GRID_SIZE,  target_state
+import random
 
 def locate_blank(state):
     for i in range(GRID_SIZE):
@@ -32,3 +33,12 @@ def calculate_heuristic(state):
 
 def is_goal(state):
     return state == target_state
+
+def create_random_state():
+    """
+    Tạo một trạng thái ngẫu nhiên cho bài toán 8-puzzle.
+    Trạng thái là một danh sách 3x3 chứa các con số từ 0 đến 8.
+    """
+    numbers = list(range(9))  # Danh sách các số từ 0 đến 8
+    random.shuffle(numbers)  # Xáo trộn danh sách để tạo trạng thái ngẫu nhiên
+    return [numbers[i:i+3] for i in range(0, 9, 3)]  # Chuyển thành ma trận 3x3

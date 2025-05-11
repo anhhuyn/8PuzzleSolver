@@ -12,3 +12,8 @@ from .stochastic_hill_climbing import stochastic_hill_climbing
 from .simulated_annealing import simulated_annealing
 from .beam_search import beam_search
 from .genetic_algorithm import genetic_algorithm
+
+from .uncertain_bfs import uncertain_bfs
+from .search_with_no_observations import search_with_no_observations
+from .partially_observable_bfs import partially_observable_bfs
+
