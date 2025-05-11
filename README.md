@@ -11,8 +11,16 @@
     - **Chi phí đường đi (Path Cost):** tổng số bước di chuyển từ trạng thái ban đầu đến trạng thái đích.
     - **Solution là gì?:** là chuỗi hành động hoặc dãy trạng thái dẫn từ trạng thái ban đầu đến đích.
 
-    <img src="bfs.gif" alt="Mô phỏng BFS" width="150"/>
-    <img src="ids.gif" alt="Mô phỏng IDS" width="150"/>
+        <figure>
+        <img src="bfs.gif" width="150"/>
+        <figcaption><strong>Mô phỏng BFS</strong></figcaption>
+        </figure>
+
+        <figure>
+        <img src="ids.gif" width="150"/>
+        <figcaption><strong>Mô phỏng IDS</strong></figcaption>
+        </figure>
+
     2.2. Các thuật toán Tìm kiếm có thông tin (Informed Search)
     
     2.3. Các thuật toán Tìm kiếm cục bộ (Local Search)
