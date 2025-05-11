@@ -127,7 +127,7 @@ Thuật toán Backtracking giải quyết bài toán CSP thông qua việc thử
 - **Bước 5:** Nếu vi phạm, quay lại bước 2 và thử giá trị khác.
 - **Bước 6:** Nếu không còn giá trị hợp lệ, quay lại bước 1 của biến trước đó.
 
-| <img src="backtracking.gif" width="150"/> |
+| <img src="backtracking_search.gif" width="150"/> |
 |:----------------------------------------:|
 | **Mô phỏng Backtracking (Sudoku)**       |
 
