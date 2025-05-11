@@ -18,7 +18,8 @@ from algorithms import (
     genetic_algorithm,
     uncertain_bfs, 
     search_with_no_observations,
-    partially_observable_bfs
+    partially_observable_bfs,
+    backtracking_search
 )
 
 
@@ -54,7 +55,8 @@ def main():
             ("Beam Search", lambda: beam_search(5)),
             ("GA", genetic_algorithm),
             ("Uncertain BFS", uncertain_bfs),
-            ("No Observations", search_with_no_observations)
+            ("No Observations", search_with_no_observations),
+            ("Backtracking", backtracking_search)
         ]
     ]
 

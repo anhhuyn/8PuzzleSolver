@@ -108,7 +108,42 @@ Mục tiêu của bài toán là tìm ra dãy hành động (chuỗi trạng th�
 | **Ứng dụng**             | Khi môi trường có yếu tố không chắc chắn, cần tìm kiếm theo chiều rộng | Khi không có bất kỳ thông tin quan sát nào về môi trường | Khi môi trường có thông tin quan sát một phần và có thể dẫn tới các quyết định chính xác hơn |
 
 ### 2.5. Các thuật toán Tìm kiếm CSPs - Constraint Satisfaction Problems
+#### Thành phần chính của bài toán ràng buộc (CSP)
 
-### 2.6. Các thuật toán Tìm kiếm Học tăng cường (Reinforcement Learning)
+- **Biến (Variables):** tập hợp các biến cần gán giá trị (VD: các vùng trong bản đồ, các ô trong Sudoku).  
+- **Miền giá trị (Domains):** tập giá trị hợp lệ cho mỗi biến.  
+- **Ràng buộc (Constraints):** điều kiện mà các giá trị gán phải thỏa mãn (VD: các vùng liền kề không trùng màu).  
+- **Gán (Assignment):** một tập hợp các cặp biến-giá trị (một phần hoặc đầy đủ).  
+- **Bài toán hoàn chỉnh:** khi mọi biến đều được gán và tất cả ràng buộc đều thỏa mãn.
+
+#### Cấu trúc thuật toán Backtracking
+
+Thuật toán Backtracking giải quyết bài toán CSP thông qua việc thử nghiệm các giá trị của các biến từ miền giá trị (domain). Nếu một giá trị gây ra vi phạm ràng buộc, thuật toán sẽ quay lại và thử giá trị khác.
+
+- **Bước 1:** Chọn một biến chưa được gán giá trị.
+- **Bước 2:** Chọn một giá trị hợp lệ từ miền giá trị của biến.
+- **Bước 3:** Kiểm tra xem giá trị này có vi phạm ràng buộc hay không.
+- **Bước 4:** Nếu không vi phạm, gán giá trị cho biến và tiếp tục bước 1.
+- **Bước 5:** Nếu vi phạm, quay lại bước 2 và thử giá trị khác.
+- **Bước 6:** Nếu không còn giá trị hợp lệ, quay lại bước 1 của biến trước đó.
+
+| <img src="backtracking.gif" width="150"/> |
+|:----------------------------------------:|
+| **Mô phỏng Backtracking (Sudoku)**       |
 
 ## 3. Kết luận
+
+Dự án **8PuzzleSolver** đã giúp tiếp cận, áp dụng và so sánh toàn diện các thuật toán tìm kiếm trong trí tuệ nhân tạo thông qua một bài toán cổ điển nhưng đầy thử thách — bài toán 8-Puzzle. Một số kết quả đạt được nổi bật như sau:
+
+- **Hiểu rõ bản chất và cơ chế hoạt động** của các nhóm thuật toán tìm kiếm: từ các thuật toán không có thông tin như BFS, DFS đến các thuật toán có sử dụng heuristic như A*, Greedy và các phương pháp cục bộ như Hill Climbing, Simulated Annealing.
+  
+- **Triển khai thành công và trực quan hóa** các thuật toán với mô phỏng trực tiếp trên bài toán 8-Puzzle, giúp dễ dàng quan sát và đánh giá hiệu quả giữa các phương pháp. Các hình ảnh mô phỏng đã minh họa rõ ràng quá trình tìm kiếm lời giải.
+
+- **So sánh chi tiết hiệu suất** các thuật toán về các tiêu chí: tính tối ưu, tính hoàn tất, độ phức tạp thời gian và bộ nhớ, từ đó rút ra các trường hợp áp dụng phù hợp cho từng thuật toán.
+
+- **Khám phá môi trường phức tạp và ràng buộc**, như môi trường không chắc chắn hoặc bài toán CSP, mở rộng phạm vi bài toán từ môi trường đơn giản đến các trường hợp thực tế hơn.
+
+- **Kết hợp lý thuyết với thực hành** thông qua cài đặt các giải thuật, mô phỏng và đánh giá, giúp củng cố vững chắc kiến thức về trí tuệ nhân tạo và kỹ năng giải quyết bài toán AI.
+
+Thông qua dự án này, không chỉ hiểu sâu hơn về cách các thuật toán hoạt động mà còn nâng cao tư duy phân tích, khả năng tối ưu hoá và lựa chọn thuật toán phù hợp cho từng loại bài toán cụ thể. Dự án là nền tảng tốt cho việc áp dụng AI vào các bài toán phức tạp hơn trong thực tế.
+

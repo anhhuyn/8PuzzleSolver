@@ -17,3 +17,6 @@ from .uncertain_bfs import uncertain_bfs
 from .search_with_no_observations import search_with_no_observations
 from .partially_observable_bfs import partially_observable_bfs
 
+from .backtracking_search import backtracking_search
+
+
