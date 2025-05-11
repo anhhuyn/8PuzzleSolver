@@ -21,7 +21,13 @@ Mục tiêu của bài toán là tìm ra dãy hành động (chuỗi trạng th�
 |:--------------------------------:|:--------------------------------:|:--------------------------------:|:--------------------------------:|
 | **Mô phỏng BFS**                 | **Mô phỏng IDS**                 | **Mô phỏng UCS**                 | **Mô phỏng DFS**                 |
 #### So sánh hiệu suất
-    ![Biểu đồ hiệu suất](performance_comparison_uninformed.png.png)
+| **Criterion**   | **Breadth-First** | **Uniform Cost** | **Depth-First** | **Depth-Bounded** | **Iterative Deepening** |
+|-----------------|-------------------|------------------|------------------|---------------------|--------------------------|
+| **Complete?**   | yes*              | yes              | no               | no                  | semi                     |
+| **Optimal?**    | yes**             | yes              | no               | no                  | yes**                    |
+| **Time**        | O(b^d)            | O(b^{⌈C*/ε⌉})     | O(b^m)           | O(b^ℓ)              | O(b^d)                   |
+| **Space**       | O(b^d)            | O(b^{⌈C*/ε⌉})     | O(bm)            | O(b^ℓ)              | O(bd)                    |
+
 
 ### 2.2. Các thuật toán Tìm kiếm có thông tin (Informed Search)
 
