@@ -20,9 +20,9 @@ Mục tiêu của bài toán là tìm ra dãy hành động (chuỗi trạng th�
 | <img src="bfs.gif" width="150"/> | <img src="ids.gif" width="150"/> | <img src="ucs.gif" width="150"/> | <img src="dfs.gif" width="150"/> |
 |:--------------------------------:|:--------------------------------:|:--------------------------------:|:--------------------------------:|
 | **Mô phỏng BFS**                 | **Mô phỏng IDS**                 | **Mô phỏng UCS**                 | **Mô phỏng DFS**                 |
-
+#### So sánh hiệu suất
     <p align="center">
-    <img src="performance_comparison_uninformed.png" width="600" alt="So sánh hiệu suất các thuật toán"/>
+        <img src="performance_comparison_uninformed.png" width="400" alt="Biểu đồ so sánh hiệu suất các thuật toán tìm kiếm"/>
     </p>
 
 ### 2.2. Các thuật toán Tìm kiếm có thông tin (Informed Search)
