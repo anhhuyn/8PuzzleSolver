@@ -15,11 +15,12 @@ Mục tiêu của bài toán là tìm ra dãy hành động (chuỗi trạng th�
 - **Trạng thái kế tiếp (Transition Model):** trạng thái mới sau khi thực hiện một hành động.
 - **Trạng thái đích (Goal State):** trạng thái mà các ô được sắp xếp đúng thứ tự.
 - **Chi phí đường đi (Path Cost):** tổng số bước di chuyển từ trạng thái ban đầu đến trạng thái đích.
-- **Solution là gì?:** là chuỗi hành động hoặc dãy trạng thái dẫn từ trạng thái ban đầu đến đích.
+- **Solution:** chuỗi hành động hoặc dãy trạng thái dẫn từ trạng thái ban đầu đến đích.
 
-| ![BFS](bfs.gif) | ![IDS](ids.gif) |
-|:---------------:|:---------------:|
-| **Mô phỏng BFS** | **Mô phỏng IDS** |
+| <img src="bfs.gif" width="150"/> | <img src="ids.gif" width="150"/> | <img src="ucs.gif" width="150"/> | <img src="dfs.gif" width="150"/> |
+|:--------------------------------:|:--------------------------------:|:--------------------------------:|:--------------------------------:|
+| **Mô phỏng BFS**                 | **Mô phỏng IDS**                 | **Mô phỏng UCS**                 | **Mô phỏng DFS**                 |
+
 
 ### 2.2. Các thuật toán Tìm kiếm có thông tin (Informed Search)
 

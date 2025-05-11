@@ -57,4 +57,13 @@ def main():
                         execute_algorithm(screen, algo)
 
 if __name__ == "__main__":
+    result = depth_first_search()
+    if result:
+        print("Solution found with", len(result)-1, "moves:")
+        for step in result:
+            for row in step:
+                print(row)
+            print("-----")
+    else:
+        print("No solution found.")
     main()
