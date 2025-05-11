@@ -65,7 +65,7 @@ Mục tiêu của bài toán là tìm ra dãy hành động (chuỗi trạng th�
 - Hiệu quả với không gian trạng thái lớn hoặc vô hạn.
 - Không đảm bảo tìm được lời giải tối ưu.
 
-| <img src="hill_genetic_algorithm.gif" width="150"/> | <img src="steepest_ascent_hill_climbing.gif" width="150"/> | <img src="stochastic_hill_climbing.gif" width="150"/> | <img src="simulated_annealing.gif" width="150"/> | <img src="beam_search.gif" width="150"/> | <img src="genetic_algorithm.gif" width="150"/> |
+| <img src="simple_hill_climbing.gif" width="150"/> | <img src="steepest_ascent_hill_climbing.gif" width="150"/> | <img src="stochastic_hill_climbing.gif" width="150"/> | <img src="simulated_annealing.gif" width="150"/> | <img src="beam_search.gif" width="150"/> | <img src="genetic_algorithm.gif" width="150"/> |
 |:--------------------------------------:|:-------------------------------------:|:---------------------------------------:|:-------------------------------------:|:------------------------------:|:------------------------------------:|
 | **Simple Hill Climbing**              | **Steepest Ascent Hill Climbing**    | **Stochastic Hill Climbing**           | **Simulated Annealing (SA)**         | **Beam Search (k=5)**         | **Genetic Algorithm (GA)**           |
 
