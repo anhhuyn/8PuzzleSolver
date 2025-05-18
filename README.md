@@ -25,6 +25,7 @@ Vận dụng các nhóm thuật toán tìm kiếm không có thông tin (Uninfor
 | **Optimal?**    | yes**             | yes              | no               | yes**                    |
 | **Time**        | O(b^d)            | O(b^{⌈C*/ε⌉})     | O(b^m)           | O(b^d)                   |
 | **Space**       | O(b^d)            | O(b^{⌈C*/ε⌉})     | O(bm)            | O(bd)                    |
+
 Trong đó:
 O: độ phức tạp (thời gian hoặc không gian)
 b: branch (số nhánh trung bình ở mỗi nút)
