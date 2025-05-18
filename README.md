@@ -41,7 +41,7 @@ c*: chi phí của lời giải tối ưu
 #### Nhận xét về thời gian và số bước khi áp dụng các thuật toán tìm kiếm không có thông tin lên bài toán 8-Puzzle
 
 Với trạng thái ban đầu là initial_state = [[2, 6, 5], [0, 8, 7], [4, 3, 1]] và trạng thái đích là target_state = [[1, 2, 3], [4, 5, 6], [7, 8, 0]] 
-| **Thuật toán**             | **Số bước đến lời giải** | **Số trạng thái đã duyệt (Time)** | **Nhận xét**                                                                 |
+| **Thuật toán**             | **Số bước đến lời giải** | **Thời gian** | **Nhận xét**                                                                 |
 |----------------------------|---------------------------|-----------------------------------|------------------------------------------------------------------------------|
 | **Breadth-First Search**   | 23 bước                 | 4,4213                           | Tìm được lời giải ngắn nhất nhưng tốn nhiều bộ nhớ và thời gian.            |
 | **Uniform Cost Search**    | 23 bước         | 5,7907                              | Tương tự BFS nếu mọi bước có chi phí bằng nhau; phù hợp khi có chi phí khác nhau. |
@@ -51,30 +51,31 @@ Với trạng thái ban đầu là initial_state = [[2, 6, 5], [0, 8, 7], [4, 3,
 ### 2.2. Các thuật toán Tìm kiếm có thông tin (Informed Search)
 #### Thành phần chính của bài toán tìm kiếm
 
-- **Trạng thái ban đầu (Initial State):** vị trí ban đầu của các ô số trong 8-Puzzle.  
-- **Tập hành động (Actions):** di chuyển ô trống (lên, xuống, trái, phải).  
-- **Trạng thái kế tiếp (Transition Model):** trạng thái mới sau khi thực hiện một hành động.  
-- **Trạng thái đích (Goal State):** trạng thái mà các ô được sắp xếp đúng thứ tự.  
-- **Chi phí đường đi (Path Cost):** tổng số bước di chuyển từ trạng thái ban đầu đến trạng thái đích.  
-- **Heuristic (Hàm ước lượng):** chi phí ước lượng từ trạng thái hiện tại đến đích, ví dụ: khoảng cách Manhattan.  
+- **Trạng thái ban đầu, tập hành động, trạng thái kế tiếp, trạng thái đích và chi phí đường đi trong bài toán 8-Puzzle đều được xác định tương tự như trong các thuật toán tìm kiếm không có thông tin.
+- **Heuristic (Hàm ước lượng):** chi phí ước lượng từ trạng thái hiện tại đến đích. 
 - **Solution:** chuỗi hành động hoặc dãy trạng thái dẫn từ trạng thái ban đầu đến đích.
+
+#### So sánh hiệu suất các thuật toán 
+
+| **Algorithm**    | **Greedy Search** | **A\*** | **IDA\*** |
+|------------------|-------------------|---------|-----------|
+| **Complete?**    | NO                | YES     | YES       |
+| **Optimal?**     | NO                | YES     | YES       |
+| **Time**        | O(bm)             | O(bd)   | O(bd)     |
+| **Space**       | O(bm)             | O(bd)   | O(d)      |
 
 | <img src="astar.gif" width="150"/> | <img src="ida.gif" width="150"/> | <img src="greedy.gif" width="150"/> |
 |:----------------------------------:|:--------------------------------:|:-----------------------------------:|
 | **Mô phỏng A\***                  | **Mô phỏng IDA\***              | **Mô phỏng Greedy Best-First**     |
 
-#### So sánh các thuật toán tìm kiếm có thông tin
+#### Nhận xét về thời gian và số bước khi áp dụng các thuật toán tìm kiếm có thông tin lên bài toán 8-Puzzle
+Với trạng thái ban đầu là initial_state = [[2, 6, 5], [0, 8, 7], [4, 3, 1]] và trạng thái đích là target_state = [[1, 2, 3], [4, 5, 6], [7, 8, 0]] 
 
-| **Tiêu chí**             | **Greedy Best-First Search**             | **A\***                                     | **IDA\***                                       |
-|--------------------------|-------------------------------------------|----------------------------------------------|-------------------------------------------------|
-| **Chiến lược**           | Chọn node có `h(n)` nhỏ nhất             | Chọn node có `f(n) = g(n) + h(n)` nhỏ nhất  | Duyệt theo DFS với ngưỡng `f_limit = g(n) + h(n)` tăng dần |
-| **Cấu trúc dữ liệu**     | Priority Queue (theo `h(n)`)              | Priority Queue (theo `f(n)`)                | Stack (DFS), kết hợp lặp tăng `f_limit`         |
-| **Tối ưu (Optimal)?**    |  Không                                  |  Có nếu `h(n)` admissible                 |  Có nếu `h(n)` admissible                     |
-| **Hoàn tất (Complete)?** |  Không nếu không xử lý vòng lặp         |  Có nếu không có vòng vô hạn               |  Có nếu ngưỡng tăng hợp lý                    |
-| **Thời gian**            | Thấp nếu heuristic tốt, nhưng dễ lạc hướng| Nhanh nếu heuristic tốt và admissible        | Có thể chậm do lặp lại nhiều                   |
-| **Bộ nhớ**               | Tốn nhiều (phụ thuộc vào độ sâu và phân nhánh)| Rất tốn (O(b^d))                          | Tiết kiệm (O(d))                                |
-| **Ứng dụng**             | Khi cần tốc độ, không cần kết quả tối ưu  | Khi cần giải tối ưu                         | Khi bộ nhớ hạn chế nhưng vẫn cần giải tối ưu    |
-
+| **Thuật toán**             | **Số bước đến lời giải** | **Thời gian** | **Nhận xét**                                                             |
+|----------------------------|--------------------------|-----------------------------------|-------------------------------------------------------------------------|
+| **Greedy Search**          | 79 bước    | 0,0266                | Tốc độ nhanh do chỉ tập trung vào hàm heuristic, nhưng không ổn định, dễ rơi vào bẫy cục bộ và không đảm bảo tìm được lời giải tối ưu.  |
+| **A\***                    | 23 bước       | 0,0254     |Là thuật toán chuẩn mực cho 8-puzzle khi có đủ bộ nhớ, đảm bảo tìm được lời giải tối ưu nhờ kết hợp chi phí thực tế và hàm heuristic.     |
+| **IDA\***                  | 23 bước      | 0,8029                    | Rất phù hợp với 8-puzzle khi bộ nhớ bị giới hạn, sử dụng cấu trúc DFS kết hợp với heuristic, đảm bảo tìm được lời giải tối ưu nhưng có thể chậm hơn A*   |
 
 ### 2.3. Các thuật toán Tìm kiếm cục bộ (Local Search)
 #### Đặc điểm của tìm kiếm cục bộ
