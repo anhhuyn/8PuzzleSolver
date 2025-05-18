@@ -26,13 +26,13 @@ Vận dụng các nhóm thuật toán tìm kiếm không có thông tin (Uninfor
 | **Time**        | O(b^d)            | O(b^{⌈C*/ε⌉})     | O(b^m)           | O(b^d)                   |
 | **Space**       | O(b^d)            | O(b^{⌈C*/ε⌉})     | O(bm)            | O(bd)                    |
 
-Trong đó:
-O: độ phức tạp (thời gian hoặc không gian)
-b: branch (số nhánh trung bình ở mỗi nút)
-d: độ sâu của lời giải tối ưu
-m: độ sâu tối đa của cây
-c*: chi phí của lời giải tối ưu
-↋: chi phí tối thiểu giữa 2 trạng thái
+Trong đó:  
+O: độ phức tạp (thời gian hoặc không gian)  
+b: branch (số nhánh trung bình ở mỗi nút)  
+d: độ sâu của lời giải tối ưu  
+m: độ sâu tối đa của cây  
+c*: chi phí của lời giải tối ưu  
+ε: chi phí tối thiểu giữa 2 trạng thái
 
 | <img src="bfs.gif" width="150"/> | <img src="ids.gif" width="150"/> | <img src="ucs.gif" width="150"/> | <img src="dfs.gif" width="150"/> |
 |:--------------------------------:|:--------------------------------:|:--------------------------------:|:--------------------------------:|
