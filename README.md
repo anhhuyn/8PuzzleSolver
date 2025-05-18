@@ -1,8 +1,9 @@
-# 8PuzzleSolver
+# 8Puzzle
+Bài toán 8-Puzzle là một trò chơi trí tuệ trên bảng 3x3 gồm 8 ô đánh số từ 1 đến 8 và 1 ô trống được sắp xếp một cách ngẫu nhiên (trạng thái đầu), chúng ta cần di chuyển các ô vào vị trí chính xác để đạt trạng thái đích. Đây là bài toán kinh điển trong trí tuệ nhân tạo, dùng để nghiên cứu các thuật toán tìm kiếm.
 
 ## 1. Mục tiêu
 
-Mục tiêu của bài toán là tìm ra dãy hành động (chuỗi trạng thái) để chuyển từ trạng thái ban đầu (initial state) đến trạng thái đích (goal state) trong trò chơi 8-Puzzle, sử dụng các thuật toán tìm kiếm trong trí tuệ nhân tạo. Qua đó, giúp hiểu và áp dụng các thuật toán tìm kiếm cổ điển và có heuristic, so sánh hiệu quả của các thuật toán khác nhau. Đồng thời, củng cố kiến thức về biểu diễn trạng thái, mở rộng trạng thái và hàm heuristic.
+Vận dụng các nhóm thuật toán tìm kiếm không có thông tin (Uninformed Search), tìm kiếm có thông tin (Informed Search), tìm kiếm cục bộ (Local Search), tìm kiếm trong môi trường phức tạp (Complex Environments), CSPs (Constraint Satisfaction Problems), học tăng cường (Reinforcement Learning) vào bài toán 8-Puzzle để hiểu rõ và nắm vững hơn các thuật toán này. 
 
 ## 2. Nội dung
 
@@ -10,24 +11,41 @@ Mục tiêu của bài toán là tìm ra dãy hành động (chuỗi trạng th�
 
 #### Thành phần chính của bài toán tìm kiếm
 
-- **Trạng thái ban đầu (Initial State):** vị trí ban đầu của các ô số trong 8-Puzzle.
+- **Trạng thái ban đầu (Initial State):** Là cấu hình khởi đầu của lưới 3x3, vị trí ban đầu của các ô số từ 1 đến 8 và ô trống (đại diện bằng số 0). Trong bài toán này, trạng thái ban đầu được đặt cố định là initial_state = [[2, 6, 5], [0, 8, 7], [4, 3, 1]].
 - **Tập hành động (Actions):** di chuyển ô trống (lên, xuống, trái, phải).
 - **Trạng thái kế tiếp (Transition Model):** trạng thái mới sau khi thực hiện một hành động.
-- **Trạng thái đích (Goal State):** trạng thái mà các ô được sắp xếp đúng thứ tự.
-- **Chi phí đường đi (Path Cost):** tổng số bước di chuyển từ trạng thái ban đầu đến trạng thái đích.
+- **Trạng thái đích (Goal State):** trạng thái mà các ô được sắp xếp đúng thứ tự. Trong bài toán này, trạng thái đích cần đạt được là target_state = [[1, 2, 3], [4, 5, 6], [7, 8, 0]].
+- **Chi phí đường đi (Path Cost):** tổng số bước di chuyển từ trạng thái ban đầu đến trạng thái đích. Trong tìm kiếm không có thông tin, mỗi bước di chuyển thường được gán chi phí bằng 1, nên chi phí đường đi là tổng số bước thực hiện để đạt được lời giải.
 - **Solution:** chuỗi hành động hoặc dãy trạng thái dẫn từ trạng thái ban đầu đến đích.
+
+#### So sánh hiệu suất các thuật toán
+| **Criterion**   | **Breadth-First** | **Uniform Cost** | **Depth-First**  | **Iterative Deepening**  |
+|-----------------|-------------------|------------------|------------------|--------------------------|
+| **Complete?**   | yes*              | yes              | no               | semi                     |
+| **Optimal?**    | yes**             | yes              | no               | yes**                    |
+| **Time**        | O(b^d)            | O(b^{⌈C*/ε⌉})     | O(b^m)           | O(b^d)                   |
+| **Space**       | O(b^d)            | O(b^{⌈C*/ε⌉})     | O(bm)            | O(bd)                    |
+Trong đó:
+O: độ phức tạp (thời gian hoặc không gian)
+b: branch (số nhánh trung bình ở mỗi nút)
+d: độ sâu của lời giải tối ưu
+m: độ sâu tối đa của cây
+c*: chi phí của lời giải tối ưu
+↋: chi phí tối thiểu giữa 2 trạng thái
 
 | <img src="bfs.gif" width="150"/> | <img src="ids.gif" width="150"/> | <img src="ucs.gif" width="150"/> | <img src="dfs.gif" width="150"/> |
 |:--------------------------------:|:--------------------------------:|:--------------------------------:|:--------------------------------:|
 | **Mô phỏng BFS**                 | **Mô phỏng IDS**                 | **Mô phỏng UCS**                 | **Mô phỏng DFS**                 |
-#### So sánh hiệu suất
-| **Criterion**   | **Breadth-First** | **Uniform Cost** | **Depth-First** | **Depth-Bounded** | **Iterative Deepening** |
-|-----------------|-------------------|------------------|------------------|---------------------|--------------------------|
-| **Complete?**   | yes*              | yes              | no               | no                  | semi                     |
-| **Optimal?**    | yes**             | yes              | no               | no                  | yes**                    |
-| **Time**        | O(b^d)            | O(b^{⌈C*/ε⌉})     | O(b^m)           | O(b^ℓ)              | O(b^d)                   |
-| **Space**       | O(b^d)            | O(b^{⌈C*/ε⌉})     | O(bm)            | O(b^ℓ)              | O(bd)                    |
 
+#### Nhận xét về thời gian và số bước khi áp dụng các thuật toán tìm kiếm không có thông tin lên bài toán 8-Puzzle
+
+Với trạng thái ban đầu là initial_state = [[2, 6, 5], [0, 8, 7], [4, 3, 1]] và trạng thái đích là target_state = [[1, 2, 3], [4, 5, 6], [7, 8, 0]] 
+| **Thuật toán**             | **Số bước đến lời giải** | **Số trạng thái đã duyệt (Time)** | **Nhận xét**                                                                 |
+|----------------------------|---------------------------|-----------------------------------|------------------------------------------------------------------------------|
+| **Breadth-First Search**   | 23 bước                 | 4,4213                           | Tìm được lời giải ngắn nhất nhưng tốn nhiều bộ nhớ và thời gian.            |
+| **Uniform Cost Search**    | 23 bước         | 5,7907                              | Tương tự BFS nếu mọi bước có chi phí bằng nhau; phù hợp khi có chi phí khác nhau. |
+| **Depth-First Search**     | ---           | ---                      | Ít tốn bộ nhớ, nhưng dễ đi vào nhánh sai, có thể không tìm ra lời giải khi trạng thái đầu phức tạp     |
+| **Iterative Deepening**    | 27 bước                 | 1,5536                      | Kết hợp ưu điểm của DFS và BFS, tối ưu về bộ nhớ và tìm được lời giải ngắn. |
 
 ### 2.2. Các thuật toán Tìm kiếm có thông tin (Informed Search)
 #### Thành phần chính của bài toán tìm kiếm
