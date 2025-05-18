@@ -1,3 +1,5 @@
+# Link video: https://www.youtube.com/watch?v=ADv3FdY6IkU
+# Link github: https://github.com/anhhuyn/8PuzzleSolver.git 
 # 8Puzzle
 Bài toán 8-Puzzle là một trò chơi trí tuệ trên bảng 3x3 gồm 8 ô đánh số từ 1 đến 8 và 1 ô trống được sắp xếp một cách ngẫu nhiên (trạng thái đầu), chúng ta cần di chuyển các ô vào vị trí chính xác để đạt trạng thái đích. Đây là bài toán kinh điển trong trí tuệ nhân tạo, dùng để nghiên cứu các thuật toán tìm kiếm.
 
