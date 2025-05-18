@@ -52,7 +52,8 @@ Với trạng thái ban đầu là initial_state = [[2, 6, 5], [0, 8, 7], [4, 3,
 #### Thành phần chính của bài toán tìm kiếm
 
 - **Trạng thái ban đầu, tập hành động, trạng thái kế tiếp, trạng thái đích và chi phí đường đi trong bài toán 8-Puzzle đều được xác định tương tự như trong các thuật toán tìm kiếm không có thông tin.
-- **Heuristic (Hàm ước lượng):** chi phí ước lượng từ trạng thái hiện tại đến đích. 
+- **Heuristic (Hàm ước lượng):** chi phí ước lượng từ trạng thái hiện tại đến đích.
+- **Hàm đánh giá (f(n)): f(n) = g(n) + h(n), kết hợp chi phí đến hiện tại và chi phí ước lượng tới đích.
 - **Solution:** chuỗi hành động hoặc dãy trạng thái dẫn từ trạng thái ban đầu đến đích.
 
 #### So sánh hiệu suất các thuật toán 
@@ -66,7 +67,7 @@ Với trạng thái ban đầu là initial_state = [[2, 6, 5], [0, 8, 7], [4, 3,
 
 | <img src="astar.gif" width="150"/> | <img src="ida.gif" width="150"/> | <img src="greedy.gif" width="150"/> |
 |:----------------------------------:|:--------------------------------:|:-----------------------------------:|
-| **Mô phỏng A\***                  | **Mô phỏng IDA\***              | **Mô phỏng Greedy Best-First**     |
+| **Mô phỏng A\***                  | **Mô phỏng IDA\***              | **Mô phỏng Greedy**     |
 
 #### Nhận xét về thời gian và số bước khi áp dụng các thuật toán tìm kiếm có thông tin lên bài toán 8-Puzzle
 Với trạng thái ban đầu là initial_state = [[2, 6, 5], [0, 8, 7], [4, 3, 1]] và trạng thái đích là target_state = [[1, 2, 3], [4, 5, 6], [7, 8, 0]] 
@@ -80,25 +81,40 @@ Với trạng thái ban đầu là initial_state = [[2, 6, 5], [0, 8, 7], [4, 3,
 ### 2.3. Các thuật toán Tìm kiếm cục bộ (Local Search)
 #### Đặc điểm của tìm kiếm cục bộ
 
-- Không lưu trữ toàn bộ đường đi từ trạng thái ban đầu đến trạng thái đích.
-- Chỉ quan tâm đến trạng thái hiện tại và các trạng thái lân cận.
-- Hiệu quả với không gian trạng thái lớn hoặc vô hạn.
-- Không đảm bảo tìm được lời giải tối ưu.
+- **Trạng thái ban đầu, tập hành động, trạng thái kế tiếp, trạng thái đích, chi phí đường đi, h(n), f(n), g(n) đều được xác định tương tự như trong các thuật toán tìm kiếm có thông tin.
+- **Solution:** chuỗi hành động hoặc dãy trạng thái dẫn từ trạng thái ban đầu đến đích.
+
+### So sánh hiệu suất
+
+| **Tiêu chí**           | **Simple HC** | **Steepest HC** | **Stochastic HC** | **Simulated Annealing** | **Beam Search** | **Genetic Algorithm** |
+|------------------------|---------------|------------------|--------------------|--------------------------|------------------|------------------------|
+| **Complete?**          | NO            | NO               | NO                 | NO                       | NO               | NO                     |
+| **Optimal?**           | NO            | NO               | NO                 | NO                       | NO               | NO                     |
+| **Time**               | O(b)          | O(b)             | O(b)               | O(bc)                    | O(kb)            | O(pgb)                 |
+| **Space**              | O(1)          | O(b)             | O(1)               | O(1)                     | O(k)             | O(p)                   |
+
+**Trong đó:**  
+- **b**: Số nhánh trung bình ở mỗi nút  
+- **k**: Beam width (số trạng thái giữ lại ở mỗi bước)  
+- **p**: Population size (kích thước quần thể)  
+- **g**: Số thế hệ (generations)  
+- **c**: Hằng số phụ thuộc vào lịch giảm nhiệt (trong Simulated Annealing)
 
 | <img src="simple_hill_climbing.gif" width="150"/> | <img src="steepest_ascent_hill_climbing.gif" width="150"/> | <img src="stochastic_hill_climbing.gif" width="150"/> | <img src="simulated_annealing.gif" width="150"/> | <img src="beam_search.gif" width="150"/> | <img src="genetic_algorithm.gif" width="150"/> |
 |:--------------------------------------:|:-------------------------------------:|:---------------------------------------:|:-------------------------------------:|:------------------------------:|:------------------------------------:|
 | **Simple Hill Climbing**              | **Steepest Ascent Hill Climbing**    | **Stochastic Hill Climbing**           | **Simulated Annealing (SA)**         | **Beam Search (k=5)**         | **Genetic Algorithm (GA)**           |
 
-#### So sánh hiệu suất
+#### Nhận xét khi áp dụng các thuật toán tìm kiếm cục bộ lên bài toán 8-Puzzle
 
-| **Thuật toán**              | **Nguyên lý hoạt động**                                                                 | **Ưu điểm**                                           | **Nhược điểm**                                                 |
-|----------------------------|------------------------------------------------------------------------------------------|------------------------------------------------------|----------------------------------------------------------------|
-| **Simple Hill Climbing**   | Di chuyển đến trạng thái lân cận tốt hơn hiện tại.                                      | Đơn giản, dễ cài đặt                                 | Dễ bị kẹt ở đỉnh cục bộ hoặc cao nguyên                        |
-| **Steepest Ascent HC**     | Xét tất cả các lân cận, chọn trạng thái tốt nhất.                                       | Tăng khả năng tìm được trạng thái tốt hơn            | Tốn thời gian kiểm tra, vẫn có thể kẹt                         |
-| **Stochastic HC**          | Chọn ngẫu nhiên một trạng thái tốt hơn trong số các lân cận.                            | Giảm xác suất bị kẹt ở cao nguyên                    | Kết quả không ổn định, phụ thuộc ngẫu nhiên                    |
-| **Simulated Annealing**    | Đôi khi chấp nhận trạng thái kém hơn để thoát khỏi đỉnh cục bộ, xác suất giảm theo thời gian. | Có thể vượt qua đỉnh cục bộ                          | Cần điều chỉnh tham số (nhiệt độ), có thể chậm                 |
-| **Beam Search (k=5)**      | Duy trì k trạng thái tốt nhất ở mỗi bước.                                               | Cân bằng hiệu quả và chất lượng lời giải            | Có thể bỏ lỡ lời giải tốt nếu không nằm trong beam             |
-| **Genetic Algorithm (GA)** | Mô phỏng tiến hóa sinh học: chọn lọc, lai ghép, đột biến để tạo thế hệ mới.             | Khả năng khám phá không gian rộng, lời giải đa dạng | Phức tạp, cần tinh chỉnh tham số                              |
+
+| **Thuật toán**             | **Nhận xét**                                                                                       |
+|----------------------------|----------------------------------------------------------------------------------------------------|
+| **Simple Hill Climbing**   | Dễ rơi vào điểm cực trị, không quay lui, đơn giản nhưng không hiệu quả với không gian lớn.         |
+| **Steepest Ascent HC**     | Cải thiện so với Simple HC bằng cách chọn nước đi tốt nhất tại mỗi bước, nhưng vẫn dễ bị kẹt.     |
+| **Stochastic HC**          | Tránh kẹt cục bộ tốt hơn nhờ chọn hành động ngẫu nhiên, tuy nhiên không đảm bảo tối ưu.           |
+| **Simulated Annealing**    | Có thể thoát khỏi bẫy cục bộ nhờ chấp nhận trạng thái kém hơn theo xác suất giảm dần.             |
+| **Beam Search (k=2)**      | Giữ lại k trạng thái tốt nhất tại mỗi bước, tăng độ bao quát, nhưng vẫn có thể bỏ sót lời giải tốt.|
+| **Genetic Algorithm**      | Không phù hợp cho 8-puzzle vì các phép lai ghép và xáo trộn có thể phá vỡ cấu trúc của trò chơi.  |
 
 ### 2.4. Các thuật toán Tìm kiếm trong môi trường phức tạp (Complex Environments)
 #### Thành phần chính của bài toán tìm kiếm trong môi trường phức tạp
