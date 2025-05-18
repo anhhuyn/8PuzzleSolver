@@ -239,10 +239,12 @@ Thuật toán được sử dụng là **Q-Learning**, một thuật toán model
 
 - **Khám phá môi trường phức tạp và ràng buộc**, như môi trường không chắc chắn hoặc bài toán CSP, mở rộng phạm vi bài toán từ môi trường đơn giản đến các trường hợp thực tế hơn.
 
-- **Kết hợp lý thuyết với thực hành** thông qua cài đặt các giải thuật, mô phỏng và đánh giá, giúp củng cố vững chắc kiến thức về trí tuệ nhân tạo và kỹ năng giải quyết bài toán AI.
+- **Kết hợp lý thuyết với thực hành** thông qua cài đặt các giải thuật, mô phỏng và đánh giá, giúp củng cố vững chắc kiến thức về trí tuệ nhân tạo và kỹ năng giải quyết bài toán AI. 
 
 Thông qua dự án này, không chỉ hiểu sâu hơn về cách các thuật toán hoạt động mà còn nâng cao tư duy phân tích, khả năng tối ưu hoá và lựa chọn thuật toán phù hợp cho từng loại bài toán cụ thể. Dự án là nền tảng tốt cho việc áp dụng AI vào các bài toán phức tạp hơn trong thực tế.
 
 # Tài liệu tham khảo
 1. AlmaBetter, 8 Puzzle Problem in AI, [Online]: https://www.almabetter.com/bytes/tutorials/artificial-intelligence/8-puzzle-problem-in-ai, 01/05/2025
 2. Good Audience, Solving 8-Puzzle using A* Algorithm [Online]: https://blog.goodaudience.com/solving-8-puzzle-using-a-algorithm-7b509c331288, 01/05/2025
+3. GeeksforGeeks, Q-Learning in Reinforcement Learning, [Online]: https://www.geeksforgeeks.org/q-learning-in-python/, 17/05/2025
+4. GeeksforGeeks, Constraint Satisfaction Problems (CSP) in Artificial Intelligence, [Online]: https://www.geeksforgeeks.org/constraint-satisfaction-problems-csp-in-artificial-intelligence/, 03/05/2025
