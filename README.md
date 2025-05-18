@@ -243,3 +243,6 @@ Thuật toán được sử dụng là **Q-Learning**, một thuật toán model
 
 Thông qua dự án này, không chỉ hiểu sâu hơn về cách các thuật toán hoạt động mà còn nâng cao tư duy phân tích, khả năng tối ưu hoá và lựa chọn thuật toán phù hợp cho từng loại bài toán cụ thể. Dự án là nền tảng tốt cho việc áp dụng AI vào các bài toán phức tạp hơn trong thực tế.
 
+# Tài liệu tham khảo
+1. AlmaBetter, 8 Puzzle Problem in AI, [Online]: https://www.almabetter.com/bytes/tutorials/artificial-intelligence/8-puzzle-problem-in-ai, 01/05/2025
+2. Good Audience, Solving 8-Puzzle using A* Algorithm [Online]: https://blog.goodaudience.com/solving-8-puzzle-using-a-algorithm-7b509c331288, 01/05/2025
