@@ -40,7 +40,10 @@ def render_grid(screen, state):
             pygame.draw.rect(screen, BLACK, rect, 2)
     pygame.display.flip()
 
-def execute_algorithm(screen, algo):
+def execute_algorithm(_, algo):  # bỏ screen từ menu
+    # Tạo cửa sổ game với kích thước chuẩn
+    screen = pygame.display.set_mode((WIDTH, HEIGHT))
+
     start_time = time.time()
     solution = algo()
     end_time = time.time()
@@ -63,11 +66,14 @@ def execute_algorithm(screen, algo):
 
         pygame.draw.rect(screen, (255, 255, 255), (0, HEIGHT - 50, WIDTH, 50))
         time_text = font.render(f"Time: {execution_time:.4f} sec", True, (0, 0, 0))
+        step_text = font.render(f"Steps: {len(solution) - 1}", True, (0, 0, 0))  # trừ 1 vì trạng thái ban đầu không tính là bước di chuyển
         screen.blit(time_text, (10, HEIGHT - 40))
+        screen.blit(step_text, (200, HEIGHT - 40))
+
 
         pygame.display.flip()
 
-        make_gif()  # Tạo file GIF sau khi hoàn tất
+        make_gif()
 
         waiting = True
         while waiting:

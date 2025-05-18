@@ -165,11 +165,71 @@ Thuật toán Backtracking giải quyết bài toán CSP thông qua việc thử
 
 | <img src="backtracking_search.gif" width="150"/> |
 |:----------------------------------------:|
-| **Mô phỏng Backtracking (Sudoku)**       |
+| **Mô phỏng Backtracking **       |
+
+### 2.6. Thuật toán Học tăng cường (Reinforcement Learning)
+
+#### 2.6.1. Thành phần chính của bài toán tìm kiếm và solution
+
+- **Tác nhân (Agent):** Là thực thể đưa ra các hành động trong môi trường, có nhiệm vụ học cách tối ưu để đạt được trạng thái mục tiêu.
+- **Môi trường (Environment):** Không gian mà tác nhân tương tác, trong trường hợp này là trò chơi 8-puzzle.
+- **Trạng thái (State):** Mô tả cấu hình hiện tại của trò chơi, ví dụ: vị trí của các ô số trên lưới 3x3.
+- **Hành động (Action):** Bao gồm 4 hành động chính mà tác nhân có thể thực hiện: di chuyển ô trống lên, xuống, trái, phải.
+- **Phần thưởng (Reward):** Giá trị mà tác nhân nhận được sau mỗi hành động. Thường là một số âm để giảm số bước đi, và số dương lớn khi đạt trạng thái đích.
+- **Chính sách (Policy):** Chiến lược để chọn hành động dựa vào trạng thái hiện tại. Trong Q-Learning, chính sách thường sử dụng quy tắc ε-greedy.
+- **Hàm giá trị (Value Function):** Ước lượng lợi ích dài hạn từ một trạng thái, giúp tác nhân quyết định hành động.
+- **Q-Function (Hàm Q):** Hàm Q(s, a) biểu diễn phần thưởng kỳ vọng khi thực hiện hành động a tại trạng thái s và sau đó làm theo chính sách tối ưu.
+- **Hệ số chiết khấu (Discount Factor - γ):** Quy định tầm quan trọng của phần thưởng tương lai so với phần thưởng hiện tại.
+- **Phiên (Episode):** Một chuỗi các bước đi từ trạng thái ban đầu đến khi đạt trạng thái đích hoặc kết thúc do số bước tối đa.
+
+**Lời giải (solution):** Là chuỗi hành động từ trạng thái khởi đầu đến trạng thái mục tiêu cuối cùng.
+
+#### 2.6.2. Thuật toán áp dụng lên trò chơi
+
+Thuật toán được sử dụng là **Q-Learning**, một thuật toán model-free trong học tăng cường.
+
+##### Quy trình hoạt động:
+
+1. **Khởi tạo Q-table:** Q(s, a) = 0 cho tất cả các trạng thái s và hành động a.
+2. **Chọn hành động (ε-greedy):**
+   - Với xác suất ε: chọn hành động ngẫu nhiên (khám phá - exploration).
+   - Với xác suất 1 - ε: chọn hành động có giá trị Q cao nhất (khai thác - exploitation).
+3. **Thực hiện hành động:** Nhận được phần thưởng r và chuyển sang trạng thái mới s’.
+4. **Cập nhật Q-table:**  
+   Q(s,a) ← Q(s,a) + α * [r + γ * max(Q(s’, a’)) - Q(s,a)]
+   - α: learning rate
+   - γ: discount factor
+   - max(Q(s’, a’)): giá trị Q tốt nhất ở trạng thái tiếp theo
+5. **Lặp lại:** Tiếp tục quy trình trên cho đến khi hội tụ hoặc đạt số bước tối đa.
+
+##### Các thuật toán khác có thể áp dụng:
+
+- **DQN (Deep Q-Learning):** Dùng mạng neural để ước lượng Q thay vì bảng Q.
+- **SARSA:** Giống Q-Learning nhưng cập nhật Q dựa vào hành động thực tế tiếp theo thay vì hành động tối ưu.
+
+#### 2.6.3. Nhận xét hiệu suất khi áp dụng lên trò chơi 8-puzzle
+
+**Ưu điểm:**
+
+-  **Tìm chính sách tối ưu:** Có khả năng học ra giải pháp tốt nhất qua thử nghiệm nhiều lần.
+-  **Không cần biết trước môi trường:** Thuật toán model-free, không yêu cầu mô hình chuyển đổi trạng thái.
+-  **Không gian trạng thái hữu hạn:** Trò chơi 8-puzzle có 9! = 362,880 trạng thái — đủ nhỏ để quản lý Q-table.
+
+**Nhược điểm:**
+
+-  **Không gian lớn:** Dù là hữu hạn nhưng vẫn gần 400 nghìn trạng thái, gây khó khăn lưu trữ Q-table.
+-  **Chậm hội tụ:** Cần rất nhiều lần huấn luyện để đạt chính sách tốt, đặc biệt nếu chưa tối ưu ε, α, γ.
+-  **Tối ưu tham số khó:** Việc chọn learning rate (α), discount factor (γ) và ε không phù hợp có thể dẫn tới quá trình học chậm hoặc không hiệu quả.
+
+| <img src="q_learning.gif" width="150"/> |
+|:----------------------------------------:|
+| **Mô phỏng Q-learning **       |
+
+
 
 ## 3. Kết luận
 
-Dự án **8PuzzleSolver** đã giúp tiếp cận, áp dụng và so sánh toàn diện các thuật toán tìm kiếm trong trí tuệ nhân tạo thông qua một bài toán cổ điển nhưng đầy thử thách — bài toán 8-Puzzle. Một số kết quả đạt được nổi bật như sau:
+**8PuzzleSolver** đã giúp tiếp cận, áp dụng và so sánh toàn diện các thuật toán tìm kiếm trong trí tuệ nhân tạo thông qua một bài toán cổ điển nhưng đầy thử thách — bài toán 8-Puzzle. Một số kết quả đạt được nổi bật như sau:
 
 - **Hiểu rõ bản chất và cơ chế hoạt động** của các nhóm thuật toán tìm kiếm: từ các thuật toán không có thông tin như BFS, DFS đến các thuật toán có sử dụng heuristic như A*, Greedy và các phương pháp cục bộ như Hill Climbing, Simulated Annealing.
   

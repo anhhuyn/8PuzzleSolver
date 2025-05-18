@@ -19,13 +19,17 @@ from algorithms import (
     uncertain_bfs, 
     search_with_no_observations,
     partially_observable_bfs,
-    backtracking_search
+    backtracking_search,
+    online_dfs_agent, 
+    q_learning
 )
 
 
 def main():
     pygame.init()
-    screen = pygame.display.set_mode((WIDTH, HEIGHT))
+    menu_width = 560
+    menu_height = 640
+    screen = pygame.display.set_mode((menu_width, menu_height))
     pygame.display.set_caption("8-Puzzle Solver")
     font = pygame.font.Font(None, 30)
 
@@ -44,7 +48,9 @@ def main():
             ("Greedy", greedy_search),
             ("A*", a_star),
             ("IDA*", ida_star),
-             ("Partially Observable BFS", partially_observable_bfs)
+             ("Partially Observable BFS", partially_observable_bfs),
+             ("Online DFS", online_dfs_agent)
+
         ],
         # Cột phải: thuật toán tìm kiếm cục bộ
         [
@@ -56,7 +62,8 @@ def main():
             ("GA", genetic_algorithm),
             ("Uncertain BFS", uncertain_bfs),
             ("No Observations", search_with_no_observations),
-            ("Backtracking", backtracking_search)
+            ("Backtracking", backtracking_search),
+            ("Q-learning", q_learning)
         ]
     ]
 
@@ -86,7 +93,7 @@ def main():
                         btn_x = 50 + col_index * 260
                         btn_y = 50 + row_index * 60
                         if btn_x < x < btn_x + 200 and btn_y < y < btn_y + 50:
-                            execute_algorithm(screen, algo)
+                            execute_algorithm(None, algo)
 
 if __name__ == "__main__":
     main()

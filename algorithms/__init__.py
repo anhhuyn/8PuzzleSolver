@@ -18,5 +18,7 @@ from .search_with_no_observations import search_with_no_observations
 from .partially_observable_bfs import partially_observable_bfs
 
 from .backtracking_search import backtracking_search
+from .online_dfs_agent import online_dfs_agent
+from .q_learning import q_learning
 
 
